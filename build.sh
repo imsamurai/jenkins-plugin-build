@@ -48,7 +48,7 @@ ${GLOBAL_VENDOR}/bin/phpmd ${PLUGIN_FULL_PATH} text codesize,design,naming,unuse
 echo "PHPMD\n";
 ${GLOBAL_VENDOR}/bin/phpmd ${PLUGIN_FULL_PATH} xml codesize,design,naming,unusedcode --reportfile ${WORKSPACE}/build/logs/pmd.xml;
 echo "PHPCS\n";
-${GLOBAL_VENDOR}/bin/phpcs --report=checkstyle --report-file=${WORKSPACE}/build/logs/checkstyle.xml --standard=../PHP/CodeSniffer/Standards/CakePHP --encoding=utf-8 --extensions=php,ctp --ignore=test,Plugin,Vendor,Test,TestSuite ${PLUGIN_FULL_PATH};
+${GLOBAL_VENDOR}/bin/phpcs --report=checkstyle --report-file=${WORKSPACE}/build/logs/checkstyle.xml --standard=${WORKSPACE}/../PHP/CodeSniffer/Standards/CakePHP --encoding=utf-8 --extensions=php,ctp --ignore=test,Plugin,Vendor,Test,TestSuite ${PLUGIN_FULL_PATH};
 echo "PHPCPD\n";
 ${GLOBAL_VENDOR}/bin/phpcpd --log-pmd ${WORKSPACE}/build/logs/pmd-cpd.xml ${PLUGIN_FULL_PATH};
 echo "PHPDOC\n";
