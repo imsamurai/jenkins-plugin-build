@@ -9,7 +9,7 @@ composer global require --dev --no-interaction --prefer-source --update-with-dep
 
 cd ${WORKSPACE}/
 
-git clone https://github.com/FriendsOfCake/travis.git --depth 1 ../travis;
+git clone https://github.com/imsamurai/travis.git --depth 1 ../travis;
 ../travis/before_script.sh;
 
 echo "<?php
@@ -33,7 +33,13 @@ mkdir -p ${WORKSPACE}/build/pdepend;
 
 chmod +x ../cakephp/app/Console/cake;
 
-cd ../cakephp/app;
+cd ../cakephp/
+if [ -f "$PLUGIN_FULL_PATH/before_script.sh" ]; then
+ chmod +x $PLUGIN_FULL_PATH/before_script.sh;
+ $PLUGIN_FULL_PATH/before_script.sh;
+fi;
+
+cd app;
 
 echo "HHVM TESTS\n";
 ./Console/cakehhvm test ${PLUGIN_NAME} All${PLUGIN_NAME};
